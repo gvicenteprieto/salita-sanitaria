@@ -1,11 +1,24 @@
 import mongoose from "mongoose";
 
+// const chatSchema = new mongoose.Schema ({
+//     title: {
+//         type: String,
+//         required: true
+//     },
+//     description: {
+//         type: String
+//     }
+// },{
+//     timestamp: true
+// })
+
+
 const chatSchema = new mongoose.Schema ({
-    title: {
+    email: {
         type: String,
         required: true
     },
-    description: {
+    message: {
         type: String
     }
 },{

@@ -4,10 +4,13 @@ export const cargarChat = (callback) => {
   socket.on("server:cargaChat", callback);
 };
 
-export const guardarChat = (title, description) => {
+//export const guardarChat = (title, description) => {
+  export const guardarChat = (email, message) => {
   socket.emit("client:nuevoChat", {
-    title,
-    description,
+    // title,
+    // description,
+    email,
+    message,
   });
 };
 
@@ -31,10 +34,18 @@ export const onSelectChat = (callback) => {
   socket.on("server:chatSeleccionado", callback);
 };
 
-export const updateChat = (id, title, description) => {
+// export const updateChat = (id, title, description) => {
+//   socket.emit("client:updateChat", {
+//     _id: id,
+//     title,
+//     description,
+//   });
+// };
+
+export const updateChat = (id, email, message) => {
   socket.emit("client:updateChat", {
     _id: id,
-    title,
-    description,
+    email,
+    message,
   });
 };

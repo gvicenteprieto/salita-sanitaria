@@ -27,8 +27,10 @@ export default (io) => {
 
     socket.on('client:updateChat', async (data) =>{
       await Chat.findByIdAndUpdate(data._id, {
-        title: data.title,
-        description: data.description
+        // title: data.title,
+        // description: data.description
+        email: data.email,
+        message: data.message
         })
         emitChats()
     })
