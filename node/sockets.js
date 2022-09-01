@@ -2,6 +2,7 @@ import Chat from "./models/ChatModel.js";
 
 export default (io) => {
   io.on("connection", (socket) => {
+    console.log("usuario conectado")
     const emitChats = async () => {
       const chats = await Chat.find();
       io.emit("server:cargaChat", chats);
@@ -27,8 +28,6 @@ export default (io) => {
 
     socket.on('client:updateChat', async (data) =>{
       await Chat.findByIdAndUpdate(data._id, {
-        // title: data.title,
-        // description: data.description
         email: data.email,
         message: data.message
         })

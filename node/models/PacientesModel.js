@@ -1,6 +1,6 @@
 import pacientesDB from '../database/pacientesDB.js';
 import  DataType  from 'sequelize';
-//defino el modelo y lo asigno a una variable
+
 const PacientesModel = pacientesDB.define('pacientes', {
     nombre: {type: DataType.STRING},
     apellido: {type: DataType.STRING},

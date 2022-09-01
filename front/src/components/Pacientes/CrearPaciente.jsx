@@ -3,19 +3,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const URI = "http://localhost:8000/empleados";
+const URI = "http://localhost:8000/pacientes";
 
-const CreateEmpleados = () => {
+const CrearPacientes = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  //     const [dni, setDni] = useState("");
+  const [dni, setDNI] = useState("");
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mail, setMail] = useState("");
   const [nacimiento, setNacimiento] = useState("");
-  //const [fecha_contratacion, setFecha_contratacion] = useState("");
-  const [sector, setSector] = useState("");
-  const [cargo, setCargo] = useState("");
+  const [barrio, setBarrio] = useState("");
   const [art, setArt] = useState("");
   const [enfermedades, setEnfermedades] = useState("");
   const [alergias, setAlergias] = useState("");
@@ -23,17 +21,17 @@ const CreateEmpleados = () => {
 
   const navigate = useNavigate();
 
-  const crear = async (e) => {
+  const crearPaciente = async (e) => {
     e.preventDefault();
     await axios.post(URI, {
       nombre,
       apellido,
+      dni,
       direccion,
       telefono,
       mail,
       nacimiento,
-      sector, 
-      cargo,
+      barrio,
       art,
       enfermedades,
       alergias,
@@ -44,8 +42,8 @@ const CreateEmpleados = () => {
 
   return (
     <div className="container">
-      <h4> Crear un nuevo registro</h4>
-      <form onSubmit={crear}>
+      <h5 className="mt-3"> Crear un nuevo registro de Paciente</h5>
+      <form onSubmit={crearPaciente}>
         <div className="form-group mb-3">
           <label className="form-label">Nombre</label>
           <input
@@ -53,6 +51,7 @@ const CreateEmpleados = () => {
             className="form-control"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
+            autoFocus
           />
         </div>
         <div className="form-group mb-3">
@@ -65,6 +64,15 @@ const CreateEmpleados = () => {
           />
         </div>
         <div className="form-group mb-3">
+          <label className="form-label">DNI</label>
+          <input
+            type="text"
+            className="form-control"
+            value={dni}
+            onChange={(e) => setDNI(e.target.value)}
+          />
+        </div>
+        <div className="form-group mb-3">
           <label className="form-label">Direccion</label>
           <input
             type="text"
@@ -74,9 +82,9 @@ const CreateEmpleados = () => {
           />
         </div>
         <div className="form-group mb-3">
-          <label className="form-label">Telefono</label>
+          <label className="form-label">Teléfono</label>
           <input
-            type={telefono}
+            type="text"
             className="form-control"
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
@@ -85,7 +93,7 @@ const CreateEmpleados = () => {
         <div className="form-group mb-3">
           <label className="form-label">Correo</label>
           <input
-            type={mail}
+            type="text"
             className="form-control"
             value={mail}
             onChange={(e) => setMail(e.target.value)}
@@ -94,7 +102,7 @@ const CreateEmpleados = () => {
         <div className="form-group mb-3">
           <label className="form-label">Fecha de nacimiento</label>
           <input
-            type={nacimiento}
+            type="text"
             className="form-control"
             value={nacimiento}
             onChange={(e) => setNacimiento(e.target.value)}
@@ -102,29 +110,19 @@ const CreateEmpleados = () => {
         </div>
 
         <div className="form-group mb-3">
-          <label className="form-label">Sector</label>
+          <label className="form-label">Barrio</label>
           <input
-            type={sector}
+            type="text"
             className="form-control"
-            value={sector}
-            onChange={(e) => setSector(e.target.value)}
+            value={barrio}
+            onChange={(e) => setBarrio(e.target.value)}
           />
         </div>
 
-
-        <div className="form-group mb-3">
-          <label className="form-label">Cargo</label>
-          <input
-            type={cargo}
-            className="form-control"
-            value={cargo}
-            onChange={(e) => setCargo(e.target.value)}
-          />
-        </div>
         <div className="form-group mb-3">
           <label className="form-label">ART</label>
           <input
-            type={art}
+            type="text"
             className="form-control"
             value={art}
             onChange={(e) => setArt(e.target.value)}
@@ -133,7 +131,7 @@ const CreateEmpleados = () => {
         <div className="form-group mb-3">
           <label className="form-label">Enfermedades</label>
           <input
-            type={enfermedades}
+            type="text"
             className="form-control"
             value={enfermedades}
             onChange={(e) => setEnfermedades(e.target.value)}
@@ -142,7 +140,7 @@ const CreateEmpleados = () => {
         <div className="form-group mb-3">
           <label className="form-label">Alergias</label>
           <input
-            type={alergias}
+            type="text"
             className="form-control"
             value={alergias}
             onChange={(e) => setAlergias(e.target.value)}
@@ -151,7 +149,7 @@ const CreateEmpleados = () => {
         <div className="form-group mb-3">
           <label className="form-label">Consulta</label>
           <input
-            type={consulta}
+            type="text"
             className="form-control"
             value={consulta}
             onChange={(e) => setConsulta(e.target.value)}
@@ -162,12 +160,12 @@ const CreateEmpleados = () => {
         </button>
       </form>
       <Link to={`/`}>
-            <button className="btn btn-success m-3">
-              <i className="fas fa-home"></i>
-            </button>
-          </Link>
+        <button className="btn btn-success m-3">
+          <i className="fas fa-home"></i>
+        </button>
+      </Link>
     </div>
   );
 };
 
-export default CreateEmpleados;
+export default CrearPacientes;

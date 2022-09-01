@@ -1,0 +1,65 @@
+.footerClass {
+  text-align: center;
+}
+
+.addressClass {
+    color: #ffffff;
+  padding-top: 10px;
+  font-size: 0.475em;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+
+.addressDecahf {
+  color: #31a3cd;
+  font-size: 0.6em;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.footerClass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.footerClass2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.footerLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  margin-bottom: 15px;
+}
+
+.fondo-argentina {
+  background-color: #37bbed;
+}
+
+.alinear-izquierda {
+  float: right;
+}
+
+.footer-logo {
+  height: 12vmin;
+}
+
+.footer-logoTrenes {
+  margin-top: 0.75rem;
+  height: 8vmin;
+}

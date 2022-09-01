@@ -4,35 +4,36 @@ import { Box, Avatar } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const URI = "http://localhost:8000/empleados";
+const URI = "http://localhost:8000/pacientes";
 
-const Empleado = () => {
+const Paciente = () => {
   const { id } = useParams();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const [dni, setDNI] = useState("");
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mail, setMail]  = useState("");
   const [nacimiento, setNacimiento] = useState("")
   const [barrio, setBarrio] = useState("");
-  const [cargo, setCargo] = useState("");
+  // const [cargo, setCargo] = useState("");
   const [art, setArt] = useState("");
   const [enfermedades, setEnfermedades] = useState("");
   const [alergias, setAlergias] = useState("");
   const [consulta, setConsulta] = useState("");
   const [avatar, setAvatar] = useState("");
-  //const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${URI}/${id}`).then((response) => {
       setNombre(response.data.nombre);
       setApellido(response.data.apellido);
+      setDNI(response.data.dni);
       setDireccion(response.data.direccion);
       setTelefono(response.data.telefono);
       setMail(response.data.mail);
       setNacimiento(response.data.nacimiento)
       setBarrio(response.data.barrio);
-      setCargo(response.data.cargo);
+      // setCargo(response.data.cargo);
       setArt(response.data.art);
       setEnfermedades(response.data.enfermedades);
       setAlergias(response.data.alergias);
@@ -52,6 +53,9 @@ const Empleado = () => {
         </h4>
       </Box>
       <Box>
+        <h4>DNI: {dni}</h4>
+      </Box>
+      <Box>
         <h4>Dirección: {direccion}</h4>
       </Box>
       <Box>
@@ -66,9 +70,9 @@ const Empleado = () => {
       <Box>
         <h4>Barrio: {barrio}</h4>
       </Box>
-      <Box>
+      {/* <Box>
         <h4>Cargo: {cargo}</h4>
-      </Box>
+      </Box> */}
       <Box>
         <h4>ART: {art}</h4>
       </Box>
@@ -99,4 +103,4 @@ const Empleado = () => {
   );
 };
 
-export default Empleado;
+export default Paciente;

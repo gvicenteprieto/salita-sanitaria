@@ -1,78 +1,47 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
 import cors from "cors";
+const app = express();
+
+//import consultasDB from "./database/consultasDB.js"
+
+//a index
 import { Server as WebSocketServer } from "socket.io";
 import http from "http";
-import sockets from "./sockets.js";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = express();
+import Sockets from "./sockets.js";
 const port = process.env.PORT || 8000;
-
 import { connectDB } from "./database/chatDB.js";
 connectDB();
 const server = http.createServer(app);
 const httpServer = server.listen(port);
-const io = new WebSocketServer(server);
-sockets(io);
+const io = new WebSocketServer(httpServer);
+Sockets(io);
+//
 
-// import http from "http";
-// const server = http.createServer(app)
-
-//import db from './database/db.js';
-/*
-import empleadosDB from "./database/empleadosDB.js";
-*/
-//import blogRoutes from "./routes/routes.js";
+import routeConsultas from "./routes/routeConsultas.js"
 import routePacientes from "./routes/routePacientes.js";
 import routeCalendar from "./routes/routeCalendar.js";
-import { Socket } from "socket.io";
-
-//import routeUser from "./src/routes/routeUser.js";
-
-// import mongoose from "mongoose";
-// import salita from "./models/salita.js";
-// const mongoURL = process.env.MONGO_URI;
-// mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-//app.use("/blogs", blogRoutes);
+app.use(express.static("public"));
+app.use("/consultas", routeConsultas);
 app.use("/pacientes", routePacientes);
 app.use("/calendario", routeCalendar);
-//app.use("/users", routeUser);
+
+app.get("/saludo", (req, res) => {
+  res.send("hola mundo")
+});
 
 //definiendo la conexión de pruebas
-// try {
-//   await db.authenticate();
-//   console.log('Conexión a la base de datos de prueba db: exitosa');
-// } catch (error) {
-//     console.log('Error al conectar');
-// }
-
-/*
-//conexión a base de datos empleadosDB
 try {
-  await empleadosDB.authenticate();
-  console.log("Conexión a la base de datos empleadosDB: exitosa");
+  await consultasDB.authenticate();
+  console.log('Conexión a la base de datos de prueba consultasDB: exitosa');
 } catch (error) {
-  console.log("Error en la conexión: " + error);
+    console.log('Error al conectar');
 }
-*/
 
-//static files
-//app.use(express.static("public"))
-
-app.get("/", (req, res) => {
-  res.send("hola mundo");
-  //res.sendFile(`${__dirname}/cliente/index.html`)
-});
 
 //MONGODB
 //listar todos los pacientes

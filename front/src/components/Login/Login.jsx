@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Menu from "../Menu/Menu";
 
 const Login = () => {
   const [login, setLogin] = useState("false");
@@ -105,10 +104,6 @@ const Login = () => {
               </Link>
             </div>
           </div>
-          {
-            //si login true: se muestra menú y con la prop user para usar en Menú
-            login === "true" && <Menu user={user} />
-          }
         </div>
       </div>
     </div>

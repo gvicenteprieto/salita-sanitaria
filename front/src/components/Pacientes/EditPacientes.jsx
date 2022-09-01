@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const URI = "http://localhost:8000/empleados";
+const URI = "http://localhost:8000/pacientes";
 
-const EditEmpleados = () => {
+const EditPacientes = () => {
   const { id } = useParams();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const [dni, setDNI] = useState("");
   const [direccion, setDireccion] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mail, setMail]  = useState("");
   const [nacimiento, setNacimiento] = useState("")
-  const [sector, setSector] = useState("");
+  const [barrio, setBarrio] = useState("");
   const [cargo, setCargo] = useState("");
   const [art, setArt] = useState("");
   const [enfermedades, setEnfermedades] = useState("");
@@ -27,11 +28,12 @@ const EditEmpleados = () => {
     await axios.put(`${URI}/${id}`, {
       nombre,
       apellido,
+      dni,
       direccion,
       telefono, 
       mail,
       nacimiento,
-      sector,
+      barrio,
       cargo,
       art,
       enfermedades,
@@ -44,11 +46,12 @@ const EditEmpleados = () => {
     axios.get(`${URI}/${id}`).then((response) => {
       setNombre(response.data.nombre);
       setApellido(response.data.apellido);
+      setDNI(response.data.dni);
       setDireccion(response.data.direccion);
       setTelefono(response.data.telefono);
       setMail(response.data.mail);
       setNacimiento(response.data.nacimiento)
-      setSector(response.data.sector);
+      setBarrio(response.data.barrio);
       setCargo(response.data.cargo);
       setArt(response.data.art);
       setEnfermedades(response.data.enfermedades);
@@ -61,7 +64,7 @@ const EditEmpleados = () => {
     <div className="container mt-3">
       <div className="row">
         <div className="col-md-12">
-          <h4> Editar Empleado - Consultas</h4>
+          <h5> Editar datos de Paciente</h5>
           <form onSubmit={update}>
             <div className="form-group mb-3">
               <label className="form-label">Nombre</label>
@@ -80,6 +83,16 @@ const EditEmpleados = () => {
                 className="form-control"
                 value={apellido}
                 onChange={(e) => setApellido(e.target.value)}
+              />
+            </div>
+
+            <div className="form-group mb-3">
+              <label className="form-label">DNI</label>
+              <input
+                type="text"
+                className="form-control"
+                value={dni}
+                onChange={(e) => setDNI(e.target.value)}
               />
             </div>
 
@@ -125,12 +138,12 @@ const EditEmpleados = () => {
             </div>
 
             <div className="form-group mb-3">
-              <label className="form-label">Sector</label>
+              <label className="form-label">Barrio</label>
               <input
                 type="text"
                 className="form-control"
-                value={sector}
-                onChange={(e) => setSector(e.target.value)}
+                value={barrio}
+                onChange={(e) => setBarrio(e.target.value)}
               />
             </div>
 
@@ -200,4 +213,4 @@ const EditEmpleados = () => {
   );
 };
 
-export default EditEmpleados;
+export default EditPacientes;
