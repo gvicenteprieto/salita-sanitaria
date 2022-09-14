@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const URI = "http://localhost:8000/pacientes";
 
-const EditPacientes = () => {
+const EditarPaciente = () => {
   const { id } = useParams();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -213,4 +213,4 @@ const EditPacientes = () => {
   );
 };
 
-export default EditPacientes;
+export default EditarPaciente;

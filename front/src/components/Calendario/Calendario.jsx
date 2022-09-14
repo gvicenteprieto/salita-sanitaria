@@ -8,6 +8,7 @@ import moment from "moment";
 import "moment/locale/es";
 
 const URI = "http://localhost:8000/calendario";
+//const URI = "http://localhost:8000/turnos";
 
 const Calendario = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -25,7 +26,7 @@ const Calendario = () => {
   };
 
   async function handleEventAdd(data) {
-    // await axios.post("/calendario/createEvent", data.event);
+   //await axios.post("/calendario/createEvent", data.event);
     await axios.post(URI, data.event);
   }
 

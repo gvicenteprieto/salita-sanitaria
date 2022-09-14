@@ -6,26 +6,20 @@ import Datetime from "react-datetime";
 import { useState } from "react";
 
 export default function ({ isOpen, onClose, onEventAdded }) {
-  const [title, setTitle] = useState("");
-  const [start, setStart] = useState(new Date());
-  //const [end, setEnd] = useState(new Date());
-
-  //const [dni, setDNI] = useState("");
+  const [dni, setDNI] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [fecha, setFecha] = useState(new Date());
+  //const [hora, setHora] = useState(new Date());
 
   const onSubmit = (e) => {
     e.preventDefault();
     onEventAdded({
-      //dni,
+      dni,
       nombre,
       apellido,
       fecha,
-      // title,
-      // start,
-      //end,
-
+      //hora,
     });
     onClose();
   };
@@ -35,20 +29,35 @@ export default function ({ isOpen, onClose, onEventAdded }) {
       <form onSubmit={onSubmit}>
         <input
           placeholder="Apellido"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={apellido}
+          onChange={(e) => setApellido(e.target.value)}
         />
-
+                <input
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+                <input
+          placeholder="DNI"
+          value={dni}
+          onChange={(e) => setDNI(e.target.value)}
+        />
         <div>
-          <label>Fecha y Hora</label>
-          <Datetime locale="es" value={start} onChange={(date) => setStart(date)} />
+          <label>Fecha</label>
+          <Datetime
+            locale="es"
+            value={fecha}
+            onChange={(date) => setFecha(date)}
+          />
         </div>
+
+        {/* <div>
+          <label>Hora</label>
+          <Datetime value={hora} onChange={(date) => setHora(date)} />
+        </div> */}
 
         <button className="btn btn-success mt-1">Agregar turno</button>
       </form>
-
-
-
     </Modal>
   );
 }

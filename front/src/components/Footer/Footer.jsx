@@ -1,9 +1,12 @@
 import "./Footer.css";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
+import { CssBaseline } from "@material-ui/core";
 
 const Footer = () => {
   return (
+    <>
+    <CssBaseline/>
     <Box>
       {/* 0  - 1*/}
       <Box>
@@ -193,6 +196,7 @@ const Footer = () => {
         </footer>
       </Box> */}
     </Box>
+    </>
   );
 };
 export default Footer;

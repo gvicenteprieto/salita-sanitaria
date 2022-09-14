@@ -87,7 +87,7 @@ const Paciente = () => {
       </Box>
 
       <Box>
-        <Link to={`/editar/${id}`}>
+        <Link to={`/editar-paciente/${id}`}>
           <button className="btn btn-info mt-3">
             <i className="fas fa-edit"></i>
           </button>

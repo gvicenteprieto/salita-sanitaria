@@ -4,8 +4,6 @@ import express from "express";
 import cors from "cors";
 const app = express();
 
-//import consultasDB from "./database/consultasDB.js"
-
 //a index
 import { Server as WebSocketServer } from "socket.io";
 import http from "http";
@@ -19,15 +17,21 @@ const io = new WebSocketServer(httpServer);
 Sockets(io);
 //
 
+import routeMedicos from "./routes/routeMedicos.js";
+import routeTurnos from "./routes/routeTurnos.js";
 import routeConsultas from "./routes/routeConsultas.js"
 import routePacientes from "./routes/routePacientes.js";
+
 import routeCalendar from "./routes/routeCalendar.js";
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/medicos", routeMedicos);
+app.use("/turnos", routeTurnos);
 app.use("/consultas", routeConsultas);
 app.use("/pacientes", routePacientes);
+
 app.use("/calendario", routeCalendar);
 
 app.get("/saludo", (req, res) => {
@@ -35,13 +39,14 @@ app.get("/saludo", (req, res) => {
 });
 
 //definiendo la conexión de pruebas
+/*
 try {
   await consultasDB.authenticate();
   console.log('Conexión a la base de datos de prueba consultasDB: exitosa');
 } catch (error) {
     console.log('Error al conectar');
 }
-
+*/
 
 //MONGODB
 //listar todos los pacientes
