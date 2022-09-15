@@ -27,12 +27,12 @@ const BuscarTurno = () => {
           </div>
 
 
-          <div  className={classes.section}>
+          {/* <div  className={classes.section}>
             <RoomCard/>
             <RoomCard/>
             <RoomCard/>
             <RoomCard/>
-          </div>
+          </div> */}
 
           
         </div>

@@ -32,14 +32,6 @@ import Consulta from "./components/Consultas/Consulta";
 import Turnos from "./components/Turnos/Turnos";
 import BuscarTurno from "./components/Turnos/BuscarTurno";
 
-// import DatePicker from "react-datepicker"
-// import "react-datepicker/dist/react-datepicker.css"
-
-import Fechas from "./components/Turnos/Fechas"
-import ModalComp from "./components/Turnos/ModalComp"
-//import TurnosPicker from "./components/Turnos/TurnosPicker"
-
-
 Modal.setAppElement("#root");
 
 function App() {
@@ -67,9 +59,6 @@ function App() {
 
           <Route path="/turnos" element={<Turnos />} />
           <Route path="/buscarTurno" element={<BuscarTurno />} />
-
-          <Route path="/fechas" element={<Fechas />} />
-          <Route path="/modal" element={<ModalComp />} />
 
           <Route path="/calendario" element={<Calendario />} />
           {/* <Route exact path="/estadistica" element={<Estadistica />} /> */}
