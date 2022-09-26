@@ -15,7 +15,6 @@ const Turnos = () => {
   const [events, setEvents] = useState([]);
   const calendarRef = useRef(null);
 
-
   const onEventAdded = (event) => {
     let calendarApi = calendarRef.current.getApi();
    

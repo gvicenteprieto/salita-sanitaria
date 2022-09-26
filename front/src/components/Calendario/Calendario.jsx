@@ -8,33 +8,26 @@ import moment from "moment";
 import "moment/locale/es";
 
 const URI = "http://localhost:8000/calendario";
-//const URI = "http://localhost:8000/turnos";
 
 const Calendario = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
-
   const calendarRef = useRef(null);
 
   const onEventAdded = (event) => {
     let calendarApi = calendarRef.current.getApi();
     calendarApi.addEvent({
       start: moment(event.start).toDate(),
-      end: moment(event.end).toDate(),
       title: event.title,
     });
   };
 
   async function handleEventAdd(data) {
-   //await axios.post("/calendario/createEvent", data.event);
     await axios.post(URI, data.event);
   }
 
   async function handleDatesSet(data) {
-    const response = await axios.get(
-      URI
-      // moment(data.start).toISOString() + "&end=" + moment(data.end).toISOString()
-    );
+    const response = await axios.get(URI);
     setEvents(response.data);
   }
 
@@ -63,9 +56,7 @@ const Calendario = () => {
       <AddEventModal
         isOpen={modalIsOpen}
         onClose={() => setModalIsOpen(false)}
-        onEventAdded={(event) => {
-          onEventAdded(event);
-        }}
+        onEventAdded={(event) => onEventAdded(event)}
       />
     </div>
   );
