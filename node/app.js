@@ -11,6 +11,7 @@ import Sockets from "./sockets.js";
 const port = process.env.PORT || 8000;
 import { connectDB } from "./database/chatDB.js";
 connectDB();
+
 const server = http.createServer(app);
 const httpServer = server.listen(port);
 const io = new WebSocketServer(httpServer);

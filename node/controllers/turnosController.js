@@ -1,13 +1,13 @@
 import TurnosModel from "../models/TurnosModel.js";
-//import moment from "moment";
+import moment from "moment";
 
 export const getAllTurnos = async (req, res) => {
   try {
-    const turnos = await TurnosModel.findAll();
-    // const turnos = await TurnosModel.findAll({
-    //   fecha: { $gte: moment(req.query.fecha).toDate() },
-    //   hora: { $lte: moment(req.query.hora).toDate() },
-    // });
+    //const turnos = await TurnosModel.findAll();
+    const turnos = await TurnosModel.findAll({
+      fecha: { $gte: moment(req.query.fecha).toDate() },
+      hora: { $lte: moment(req.query.hora).toDate() },
+    });
     res.json(turnos);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -34,7 +34,7 @@ export const createTurno = async (req, res) => {
       nombre: req.body.nombre,
       apellido: req.body.apellido,
       fecha: req.body.fecha,
-      //hora: req.body.hora,
+      hora: req.body.hora,
     });
     res.json({ turno });
   } catch (err) {

@@ -16,9 +16,7 @@ import  DataType from 'sequelize';
 
 const Event = calendarioDB.define('events', {
     title: {type: DataType.STRING},
-    start: {type: DataType.DATE},
-    end: {type: DataType.DATE},
-
+    start: {type: DataType.DATE}
 });
 
 export default Event;
