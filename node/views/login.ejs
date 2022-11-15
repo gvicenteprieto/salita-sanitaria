@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>App Consultorio Salita</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    <main class="form-signin bcg text-center shadow-lg p-3 mb-3">
+        <form id="formLogin" action="/auth" method="post">
+            <!-- <form id="formLogin" action="/login" method="post"></form> -->
+            <h1 class="h3 mb-3 fw-normal text-argentina">INGRESO</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control mb-3" id="user" name="user" placeholder="name@example.com"
+                    required>
+                <label for="user">Cuenta Usuario</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="pass" name="pass" placeholder="Password" required>
+                <label for="pass">Password</label>
+            </div>
+            <div class="card-footer bg-transparent borde-argentina m-3">
+                <button class="w-100 btn btn-lg fondo-argentina text-light mt-3 " type="submit">ACCEDER</button>
+                <br> <br>
+                <a type="button" class="w-100 btn btn-lg btn-success" href="/register">REGISTRARSE</a>
+            </div>
+            <p class="mb-3 text-argentina">&copy; TRENES ARGENTINOS <br> CAPITAL HUMANO</p>
+        </form>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,8 +1,6 @@
 import { guardarChat, deleteChat, getChat, updateChat } from "./socket.js";
 
 const chatsList = document.querySelector("#chats");
-// const title = document.querySelector("#title");
-// const description = document.querySelector("#description");
 const title = document.querySelector("#email");
 const description = document.querySelector("#message");
 let savedId = "";
@@ -34,8 +32,6 @@ export const renderChat = (chats) => {
 };
 
 export const fillForm = (chat) => {
-  // title.value = chat.title;
-  // description.value = chat.description;
   email.value = chat.email;
   message.value = chat.message;
   savedId = chat._id;
@@ -44,10 +40,8 @@ export const fillForm = (chat) => {
 export const onHandleSubmit = (e) => {
   e.preventDefault();
   if (savedId) {
-    // updateChat(savedId, title.value, description.value)
     updateChat(savedId, email.value, message.value);
   } else {
-    //guardarChat(title.value, description.value);
     guardarChat(email.value, message.value);
   }
 

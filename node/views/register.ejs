@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>App Consultorio Salita</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.95)
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  <!-- Custom styles for this template -->
+  <link href="css/signin.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+  <main class="form-signin text-center bcg shadow-lg p-3 mb-3">
+
+    <section>
+
+      <h1 class="h3 fw-normal text-argentina">REGISTRO</h1>
+
+      <form action="/register" method="post">
+        <div>
+          <label for="name" class="form-label text-argentina">Nombre Completo</label>
+          <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+        </div>
+
+        <!-- <div class="form-floating">
+          <input type="text" class="form-control mb-3" id="user" name="user" placeholder="name@example.com"
+              required>
+          <label for="user">Email</label>
+      </div> -->
+
+
+        <div>
+          <label for="user" class="form-label text-argentina">Cuenta Usuario</label>
+          <input type="text" class="form-control" id="user" name="user">
+        </div>
+
+        <div>
+          <label for="rol" class="form-label text-argentina">ROL</label>
+          <!-- <input type="text" class="form-control select-css" id="rol" name="rol"> -->
+          <select class="form-control select-css" name="rol" id="rol">
+            <option value="admin" selected> Admin</option>
+            <option value="data entry">Data Entry</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="pass" class="form-label text-argentina">Password</label>
+          <input type="password" class="form-control" id="pass" name="pass">
+        </div>
+
+        <div class="card-footer bg-transparent borde-argentina m-3">
+          <a href="/login" type="button" class="w-100 btn btn-secondary mt-3 mb-3">CANCELAR</a>
+          <button type="submit" class="w-100 btn btn-lg btn-success">REGISTRAR</button>
+        </div>
+
+        <p class="text-argentina">&copy; TRENES ARGENTINOS <br> CAPITAL HUMANO</p>
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <% if (typeof alert !="undefined" ) { %>
+    <script>
+      Swal.fire({
+        //position: 'top-end',
+        title: '<%= alertTitle %>',
+        text: '<%= alertMessage %>',
+        icon: '<%= alertTitle %>',
+        showConfirmButton: '<%= showConfirmButton %>',
+        timer: '<%= timer %>'
+      }).then(() => {
+          window.location = '/login <%= ruta %>'
+        })
+    </script>
+    <% } %>
+</body>
+
+</html>

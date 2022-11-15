@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
+import session from "express-session";
 import cors from "cors";
 const app = express();
 
@@ -20,12 +21,14 @@ Sockets(io);
 
 import routeMedicos from "./routes/routeMedicos.js";
 import routeTurnos from "./routes/routeTurnos.js";
-import routeConsultas from "./routes/routeConsultas.js"
+import routeConsultas from "./routes/routeConsultas.js";
 import routePacientes from "./routes/routePacientes.js";
 
 import routeCalendar from "./routes/routeCalendar.js";
+import router from "./routes/routes.js";
 
 app.use(cors());
+app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/medicos", routeMedicos);
@@ -35,9 +38,45 @@ app.use("/pacientes", routePacientes);
 
 app.use("/calendario", routeCalendar);
 
+app.use("/", router)
+
+// seteo motor de plantilla EJS
+app.set("view engine", "ejs");
+
+// variables de session
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
 app.get("/saludo", (req, res) => {
-  res.send("hola mundo")
+  res.send("hola mundo");
 });
+
+app.get("/copy", (req, res) => {
+  res.render('copy', {msg:'Pepe, conectando desde node!'});
+});
+
+
+
+console.log(`Server running on port ${port} at http://localhost:${port}/`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //definiendo la conexión de pruebas
 /*
@@ -118,4 +157,4 @@ app.delete("/api/pacientes/:id", (req, res) => {
 // server.listen(port, () => {
 //   console.log(`Server running on port ${port} at http://localhost:${port}/`);
 // });
-console.log(`Server running on port ${port} at http://localhost:${port}/`);
+//console.log(`Server running on port ${port} at http://localhost:${port}/`);
